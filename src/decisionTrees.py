@@ -29,13 +29,13 @@ def getLabelsAndData(folderPath, label):
 def run():
   (trainHealthyLabels, trainHealthyData) = getLabelsAndData('dataset/Training/healthy_corals', 'healthy')
   (trainBleachedLabels, trainBleachedData) = getLabelsAndData('dataset/Training/bleached_corals', 'bleached')
-  trainData = np.concatenate(trainHealthyData, trainBleachedData)
-  trainLabels = np.concatenate(trainHealthyLabels, trainBleachedLabels)
+  trainData = trainHealthyData + trainBleachedData
+  trainLabels = trainHealthyLabels + trainBleachedLabels
 
   (testHealthyLabels, testHealthyData) = getLabelsAndData('dataset/Testing/healthy_corals', 'healthy')
   (testBleachedLabels, testBleachedData) = getLabelsAndData('dataset/Testing/bleached_corals', 'bleached')
-  testData = np.concatenate(testHealthyData, testBleachedData)
-  testLabels = np.concatenate(testHealthyLabels, testBleachedLabels)
+  testData = testHealthyData + testBleachedData
+  testLabels = testHealthyLabels + testBleachedLabels
 
   model = DecisionTreeClassifier(random_state = 84)
   print("[INFO] Treinando modelo...")
