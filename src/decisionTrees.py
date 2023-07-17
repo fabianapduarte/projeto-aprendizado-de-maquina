@@ -26,7 +26,7 @@ def getLabelsAndData(folderPath, label):
   
   return [labels, data]
 
-def main():
+def run():
   (trainHealthyLabels, trainHealthyData) = getLabelsAndData('dataset/Training/healthy_corals', 'healthy')
   (trainBleachedLabels, trainBleachedData) = getLabelsAndData('dataset/Training/bleached_corals', 'bleached')
   trainData = np.concatenate(trainHealthyData, trainBleachedData)
@@ -44,5 +44,3 @@ def main():
   print("[INFO] Avaliando modelo...")
   predictions = model.predict(testData)
   print(classification_report(testLabels, predictions))
-
-main()
